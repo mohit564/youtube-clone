@@ -9,35 +9,35 @@ function Sidebar(props) {
     <nav className={sidebar ? "m-4" : "hidden"}>
       <ul className="flex flex-col items-start justify-center gap-y-2">
         <li
-          className="flex items-center py-2 px-6 w-full hover:bg-gray-200"
+          className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
           onClick={closeSidebar}
         >
           <AiFill.AiFillHome className="mr-4" size={22} />
           <p className="text-md">Home</p>
         </li>
         <li
-          className="flex items-center py-2 px-6 w-full hover:bg-gray-200"
+          className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
           onClick={closeSidebar}
         >
           <Md.MdSubscriptions className="mr-4" size={22} />
           <p className="text-md">Subscriptions</p>
         </li>
         <li
-          className="flex items-center py-2 px-6 w-full hover:bg-gray-200"
+          className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
           onClick={closeSidebar}
         >
           <AiFill.AiFillLike className="mr-4" size={22} />
           <p className="text-md">Liked Videos</p>
         </li>
         <li
-          className="flex items-center py-2 px-6 w-full hover:bg-gray-200"
+          className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
           onClick={closeSidebar}
         >
           <Md.MdHistory className="mr-4" size={22} />
           <p className="text-md">History</p>
         </li>
         <li
-          className="flex items-center py-2 px-6 w-full hover:bg-gray-200"
+          className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
           onClick={closeSidebar}
         >
           <Md.MdOutlineVideoLibrary className="mr-4" size={22} />
@@ -45,7 +45,7 @@ function Sidebar(props) {
         </li>
         <hr className="w-full" />
         <li
-          className="flex items-center py-2 px-6 w-full hover:bg-gray-200"
+          className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
           onClick={closeSidebar}
         >
           <Md.MdLogout className="mr-4" size={22} />
