@@ -1,19 +1,25 @@
-import React, { useState } from "react";
-import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Content from "./components/Content/Content";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+
+import HomeScreen from "./pages/HomeScreen/HomeScreen";
+import LoginScreen from "./pages/LoginScreen/LoginScreen";
 
 const App = () => {
-  const [sidebar, setSidebar] = useState(false);
-
   return (
-    <>
-      <Header toggleSidebar={() => setSidebar((value) => !value)} />
-      <main className="flex">
-        <Sidebar sidebar={sidebar} closeSidebar={() => setSidebar(false)} />
-        <Content />
-      </main>
-    </>
+    <Router>
+      <Switch>
+        <Route path="/" component={HomeScreen} exact />
+        <Route path="/login" component={LoginScreen} />
+        <Route>
+          <Redirect to="/" />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
