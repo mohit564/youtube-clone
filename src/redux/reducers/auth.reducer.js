@@ -2,7 +2,7 @@ import ACTIONS from "../actionType";
 
 const initialState = {
   accessToken: sessionStorage.getItem("ACCESS_TOKEN") || null,
-  user: sessionStorage.getItem("USER") || null,
+  user: JSON.parse(sessionStorage.getItem("USER")) || null,
   loading: false,
   error: null,
 };

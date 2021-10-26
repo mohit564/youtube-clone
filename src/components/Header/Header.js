@@ -11,7 +11,7 @@ function Header() {
   const dispatch = useDispatch();
 
   return (
-    <header className="z-10 flex items-center px-3 py-3 shadow">
+    <header className="sticky top-0 left-0 z-50 flex items-center px-3 py-3 bg-white shadow">
       <Menu
         className="w-8 h-8 opacity-75"
         onClick={() => dispatch(toggleSidebar())}

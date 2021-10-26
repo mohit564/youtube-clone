@@ -15,8 +15,8 @@ function Sidebar() {
   };
 
   return (
-    <nav className={sidebar ? "m-4" : "hidden"}>
-      <ul className="flex flex-col items-start justify-center gap-y-2">
+    <nav className={sidebar ? "m-4 h-screen sticky z-40 top-20" : "hidden"}>
+      <ul className="flex flex-col items-start justify-center bg-white gap-y-2">
         <li
           className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
           onClick={() => dispatch(closeSidebar())}
