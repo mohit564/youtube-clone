@@ -1,12 +1,21 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as Menu } from "../../assets/menu.svg";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { ReactComponent as Search } from "../../assets/search.svg";
 
-function Header({ toggleSidebar }) {
+import { toggleSidebar } from "../../redux/actions/sidebar.action";
+
+function Header() {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   return (
     <header className="z-10 flex items-center px-3 py-3 shadow">
-      <Menu className="w-8 h-8 opacity-75" onClick={toggleSidebar} />
+      <Menu
+        className="w-8 h-8 opacity-75"
+        onClick={() => dispatch(toggleSidebar())}
+      />
       <Logo className="w-24 h-8 mx-4" />
       <div className="flex justify-center md:flex-1">
         <input
@@ -18,9 +27,15 @@ function Header({ toggleSidebar }) {
           <Search className="w-5" />
         </button>
       </div>
-      <div className="hidden md:block">
-        <span className="block w-10 h-10 bg-gray-500 rounded-full"></span>
-      </div>
+      {user && (
+        <div className="hidden md:block">
+          <img
+            src={user.avatar}
+            alt="avatar"
+            className="block w-10 h-10 bg-gray-500 rounded-full"
+          />
+        </div>
+      )}
     </header>
   );
 }
