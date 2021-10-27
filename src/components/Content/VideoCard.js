@@ -76,18 +76,20 @@ function VideoCard({ video }) {
           alt="thumbnail"
           loading="lazy"
         />
-        <figcaption className="absolute p-1 text-sm text-white bg-black rounded right-2 bottom-2">
+        <span className="absolute p-1 text-sm text-white bg-black rounded right-2 bottom-2">
           {duration}
-        </figcaption>
+        </span>
       </figure>
       <div className="flex mt-2">
-        <img
-          src={channelIcon}
-          alt="channel"
-          className="w-10 h-10 rounded-full"
-          loading="lazy"
-        />
-        <div className="flex flex-col">
+        <figure>
+          <img
+            src={channelIcon}
+            alt="channel"
+            className="w-10 h-10 mr-2 rounded-full"
+            loading="lazy"
+          />
+        </figure>
+        <div className="w-11/12">
           <p className="px-2 font-medium line-clamp-2">{title}</p>
           <p className="px-2 text-sm text-gray-500">{channelTitle}</p>
           <p className="px-2 text-sm text-gray-500">

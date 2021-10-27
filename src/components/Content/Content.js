@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPopularVideos } from "../../redux/actions/videos.action";
 
 import VideoCard from "./VideoCard";
+import SkeletonContent from "../SkeletonContent/SkeletonContent";
 
 function Content() {
   const dispatch = useDispatch();
@@ -10,14 +12,26 @@ function Content() {
 
   useEffect(() => {
     dispatch(fetchPopularVideos());
-  }, [dispatch]);
+    // eslint-disable-next-line
+  }, []);
+
+  const fetchMoreVideos = () => {
+    dispatch(fetchPopularVideos());
+  };
+
+  if (!videos.length) return <SkeletonContent />;
 
   return (
-    <div className="grid grid-cols-1 gap-6 m-4 md:grid-cols-3 xl:grid-cols-4">
+    <InfiniteScroll
+      dataLength={videos.length}
+      next={fetchMoreVideos}
+      hasMore={true}
+      className="grid grid-cols-1 gap-6 m-4 md:grid-cols-3 xl:grid-cols-4"
+    >
       {videos.map((video) => (
         <VideoCard key={video.id} video={video} />
       ))}
-    </div>
+    </InfiniteScroll>
   );
 }
 

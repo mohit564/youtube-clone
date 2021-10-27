@@ -17,7 +17,7 @@ export const popularVideosReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        videos: payload.videos,
+        videos: [...state.videos, ...payload.videos],
         nextPageToken: payload.nextPageToken,
       };
     case ACTIONS.POPULAR_VIDEOS_FAIL:

@@ -2,7 +2,7 @@ import ACTIONS from "../actionType";
 import request from "../../api";
 
 export const fetchPopularVideos = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       dispatch({ type: ACTIONS.POPULAR_VIDEOS_REQUEST });
 
@@ -12,6 +12,7 @@ export const fetchPopularVideos = () => {
           chart: "mostPopular",
           regionCode: "IN",
           maxResults: 20,
+          pageToken: getState().popularVideos.nextPageToken,
         },
       });
 
