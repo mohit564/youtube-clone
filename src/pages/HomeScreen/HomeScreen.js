@@ -1,30 +1,14 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Content from "../../components/Content/Content";
+import Layout from "../../components/Layout/Layout";
+import VideoList from "../../components/Content/VideoList";
 
-const HomeScreen = () => {
-  const { loading, accessToken } = useSelector((state) => state.auth);
-  const history = useHistory();
-
-  useEffect(() => {
-    if (!loading && !accessToken) {
-      history.push("/login");
-    }
-  }, [loading, accessToken, history]);
-
+function HomeScreen() {
   return (
-    <>
-      <Header />
-      <main className="flex">
-        <Sidebar />
-        <Content />
-      </main>
-    </>
+    <Layout>
+      <VideoList />
+    </Layout>
   );
-};
+}
 
 export default HomeScreen;

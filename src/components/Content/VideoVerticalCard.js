@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import moment from "moment";
 import numeral from "numeral";
 
@@ -18,6 +19,7 @@ function VideoCard({ video }) {
   const [duration, setDuration] = useState(null);
   const [views, setViews] = useState(null);
   const [channelIcon, setChannelIcon] = useState(null);
+  const history = useHistory();
 
   // GET VIDEO DETAILS
   useEffect(() => {
@@ -67,8 +69,12 @@ function VideoCard({ video }) {
     getChannelIcon();
   }, [channelId]);
 
+  const handleVideoClick = () => {
+    history.push(`/watch/${id}`);
+  };
+
   return (
-    <div className="flex flex-col cursor-pointer">
+    <div className="flex flex-col cursor-pointer" onClick={handleVideoClick}>
       <figure className="relative">
         <img
           className="w-full"
@@ -89,10 +95,10 @@ function VideoCard({ video }) {
             loading="lazy"
           />
         </figure>
-        <div className="w-11/12">
-          <p className="px-2 font-medium line-clamp-2">{title}</p>
-          <p className="px-2 text-sm text-gray-500">{channelTitle}</p>
-          <p className="px-2 text-sm text-gray-500">
+        <div className="w-11/12 px-2">
+          <p className="font-medium line-clamp-2">{title}</p>
+          <p className="text-sm text-gray-500">{channelTitle}</p>
+          <p className="text-sm text-gray-500">
             {views} views • {moment(publishedAt).fromNow().replace(/^a/, "1")}
           </p>
         </div>

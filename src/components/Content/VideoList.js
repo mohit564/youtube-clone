@@ -3,10 +3,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPopularVideos } from "../../redux/actions/videos.action";
 
-import VideoCard from "./VideoCard";
+import VideoVerticalCard from "./VideoVerticalCard";
 import SkeletonContent from "../SkeletonContent/SkeletonContent";
 
-function Content() {
+function VideoList() {
   const dispatch = useDispatch();
   const { videos } = useSelector((state) => state.popularVideos);
 
@@ -29,10 +29,10 @@ function Content() {
       className="grid grid-cols-1 gap-6 m-4 md:grid-cols-3 xl:grid-cols-4"
     >
       {videos.map((video) => (
-        <VideoCard key={video.id} video={video} />
+        <VideoVerticalCard key={video.id} video={video} />
       ))}
     </InfiniteScroll>
   );
 }
 
-export default Content;
+export default VideoList;
