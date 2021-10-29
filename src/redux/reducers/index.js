@@ -6,6 +6,7 @@ import {
   popularVideosReducer as popularVideos,
   selectedVideoReducer as selectedVideo,
   relatedVideosReducer as relatedVideos,
+  searchVideosReducer as searchVideos,
 } from "./videos.reducer";
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   popularVideos,
   selectedVideo,
   relatedVideos,
+  searchVideos,
 });
 
 export default rootReducer;

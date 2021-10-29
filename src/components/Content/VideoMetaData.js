@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ShowMoreText from "react-show-more-text";
+import { Helmet } from "react-helmet";
 import * as Md from "react-icons/md";
 import numeral from "numeral";
 import moment from "moment";
@@ -32,6 +33,9 @@ function VideoMetaData({ video: { snippet, statistics }, videoId }) {
 
   return (
     <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <h3 className="my-2 text-lg">{title}</h3>
       <div className="flex justify-between pb-3">
         <span className="text-gray-800">

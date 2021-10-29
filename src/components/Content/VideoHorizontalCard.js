@@ -60,7 +60,7 @@ function VideoHorizontalCard({ video }) {
             id: channelId,
           },
         });
-        setChannelIcon(response.data.items[0].snippet.thumbnails.default.url);
+        setChannelIcon(response.data.items[0].snippet.thumbnails.medium.url);
       } catch (error) {
         console.error(error);
       }
@@ -81,7 +81,8 @@ function VideoHorizontalCard({ video }) {
         <img
           src={medium.url}
           alt="thumbnail"
-          className="absolute w-full h-full"
+          className="w-full h-full"
+          loading="lazy"
         ></img>
         <span className="absolute p-1 text-xs text-white bg-black rounded-sm bottom-1 right-1">
           {duration}
@@ -92,7 +93,15 @@ function VideoHorizontalCard({ video }) {
         <p className="text-sm text-gray-500 ">
           {views} views • {moment(publishedAt).fromNow()}
         </p>
-        <p className="text-sm text-gray-500">{channelTitle}</p>
+        <div className="flex items-center mt-3">
+          <img
+            src={channelIcon}
+            alt="channelIcon"
+            className="w-10 h-10 rounded-full"
+            loading="lazy"
+          />
+          <p className="pl-2 text-sm text-gray-500">{channelTitle}</p>
+        </div>
       </div>
     </div>
   );

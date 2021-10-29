@@ -99,3 +99,37 @@ export const fetchRelatedVideos = (id) => {
     }
   };
 };
+
+export const fetchVideosBySearch = (keyword) => {
+  return async (dispatch) => {
+    try {
+      // START REQUEST
+      dispatch({
+        type: ACTIONS.SEARCH_VIDEOS_REQUEST,
+      });
+
+      // GET THE DATA
+      const response = await request.get("/search", {
+        params: {
+          part: "snippet",
+          q: keyword,
+          maxResults: 20,
+          type: "video",
+        },
+      });
+
+      // SAVE VIDEO DETAILS INTO REDUX STORE
+      dispatch({
+        type: ACTIONS.SEARCH_VIDEOS_SUCCESS,
+        payload: response.data.items,
+      });
+    } catch (error) {
+      // REQUEST FAILED
+      dispatch({
+        type: ACTIONS.SEARCH_VIDEOS_FAIL,
+        payload: error.message,
+      });
+      console.error(error);
+    }
+  };
+};

@@ -11,7 +11,7 @@ function WatchScreen() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { video, loading } = useSelector((state) => state.selectedVideo);
+  const { video } = useSelector((state) => state.selectedVideo);
 
   useEffect(() => {
     dispatch(fetchVideoById(id));
@@ -33,9 +33,9 @@ function WatchScreen() {
                 allowFullScreen
               ></iframe>
             </div>
-            {!loading && video && <VideoMetaData video={video} videoId={id} />}
+            {video && <VideoMetaData video={video} videoId={id} />}
           </div>
-          {!loading && video && <RelatedVideos videoId={id} />}
+          {video && <RelatedVideos videoId={id} />}
         </div>
       </div>
     </Layout>

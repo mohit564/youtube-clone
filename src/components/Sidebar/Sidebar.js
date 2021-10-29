@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import * as AiFill from "react-icons/ai";
 import * as Md from "react-icons/md";
 
@@ -17,13 +18,13 @@ function Sidebar() {
   return (
     <nav className={sidebar ? "m-4 h-screen sticky z-40 top-20" : "hidden"}>
       <ul className="flex flex-col items-start justify-center bg-white gap-y-2">
-        <li
+        <Link
+          to="/"
           className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
-          onClick={() => dispatch(closeSidebar())}
         >
           <AiFill.AiFillHome className="mr-4" size={22} />
           <p className="text-md">Home</p>
-        </li>
+        </Link>
         <li
           className="flex items-center w-full px-6 py-2 hover:bg-gray-200"
           onClick={() => dispatch(closeSidebar())}
